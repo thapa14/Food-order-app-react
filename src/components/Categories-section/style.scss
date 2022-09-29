@@ -1,0 +1,69 @@
+.categories__section-wrapper {
+  max-height: calc(100vh - 50px);
+  overflow-x: hidden;
+}
+.card {
+  border-radius: 1rem;
+  & > img {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    object-fit: cover;
+    height: 23rem;
+  }
+  .card-body {
+    background-color: rgb(222 226 230);
+    cursor: pointer;
+    .card-title {
+      font-size: 1.6rem;
+    }
+  }
+}
+// .menu__item
+
+.item-left {
+  border-radius: 1.2rem;
+}
+.item-right {
+  .item-about {
+    h2 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+    p {
+      display: block;
+      max-width: 100%;
+      font-size: 1.1rem;
+      height: 3rem;
+      font-weight: 500;
+      line-height: 1.4rem;
+      color: rgba(128, 128, 128, 0.7);
+      overflow: hidden;
+      line-clamp: 2;
+      text-overflow: ellipsis;
+    }
+  }
+  .item-price {
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+  .add-item {
+    .delivery-icon {
+      font-size: 2.4rem;
+      color: darkred;
+    }
+    button {
+      border: none;
+      padding: 2px 25px;
+      font-size: 1.3rem;
+      text-transform: capitalize;
+      background-color: darkred;
+      color: white;
+      border-radius: 8px;
+    }
+  }
+  span {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+}

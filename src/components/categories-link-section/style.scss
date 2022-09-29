@@ -1,0 +1,17 @@
+.nav-categories {
+  ul {
+    width: 100%;
+    font-size: 1.6rem;
+    font-weight: 500;
+    a {
+      border-bottom: 4px solid rgba(139, 0, 0, 0);
+      text-decoration: none;
+      color: black;
+    }
+    a:hover {
+      cursor: pointer;
+      color: darkred;
+      border-bottom: 4px solid darkred;
+    }
+  }
+}

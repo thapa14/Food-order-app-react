@@ -1,0 +1,32 @@
+.cart-card {
+  max-height: 75vh;
+  overflow-x: hidden;
+}
+.cart-subtitle {
+  font-size: 1.25rem;
+}
+.cart-subtitle-dark {
+  font-weight: 700;
+}
+.grand-total-font {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.delivery__heading {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+.cartItem__name {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.cartItem__modifiers {
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-top: -4px;
+}
+.cart-modifier__icon {
+  font-size: 2.2rem !important;
+}
