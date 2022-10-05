@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+// icons imports
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 
 function ModifiersItem({ modifier_item, setSelectedModierItems }) {
   const [modifierIcon, setModifierIcon] = useState(true);
   const { itemName, taxValue, valuebeforetax } = modifier_item;
-  //   console.log(taxValue);
 
   const handleModifierAddIconClick = () => {
     setModifierIcon(!modifierIcon);

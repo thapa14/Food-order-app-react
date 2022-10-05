@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import MenuItem from "./MenuItem";
+
+// icons imports
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import MenuItem from "./MenuItem";
-// import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 function CategoryItem({ item }) {
   const [expanded, toggleExpanded] = useState(false);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./style.scss";
 
 // icon import
@@ -11,6 +11,13 @@ import { useSelector } from "react-redux";
 import OrderSection from "./OrderSection";
 
 function Cart() {
+  // states
+  const [pricing, setPricing] = useState({
+    subTotal: 0,
+    taxTotal: 0,
+    totalAmount: 0,
+  });
+
   const orderedItems = useSelector((store) => store.cart.orderedItems);
   const inSeatDeliveryItems = orderedItems.inSeatDelivery;
   const pickupAtCounterItems = orderedItems.pickupAtCounter;
@@ -30,7 +37,7 @@ function Cart() {
       0
     );
     const subTotal = inSeatDeliveryItemsSubTotal + pickupAtCounterItemsSubTotal;
-    return subTotal.toFixed(2);
+    return parseFloat(subTotal.toFixed(2));
   };
 
   // function to calculate the total tax of the cart items
@@ -46,16 +53,20 @@ function Cart() {
     );
 
     const totalTax = inSeatDeliveryItemsTax + pickupAtCounterItemsTax;
-    return totalTax.toFixed(2);
+    return parseFloat(totalTax.toFixed(2));
   };
 
-  // function to calculate the grand total of the cart items
-  const grandTotal = () => {
-    const subTotal = parseFloat(calculateSubTotal());
-    const totalTax = parseFloat(calculateTotalTax());
-    const total = subTotal + totalTax;
-    return total.toFixed(2);
-  };
+  useEffect(() => {
+    let subTotalAmount = calculateSubTotal();
+    let totalTaxAmount = calculateTotalTax();
+    let grandTotalAmount = subTotalAmount + totalTaxAmount;
+
+    setPricing({
+      subTotal: subTotalAmount,
+      taxTotal: totalTaxAmount,
+      totalAmount: grandTotalAmount.toFixed(2),
+    });
+  }, [inSeatDeliveryItems, pickupAtCounterItems]);
 
   return inSeatDeliveryItems.length || pickupAtCounterItems.length ? (
     <div className="card cart-card shadow w-100   text-start">
@@ -86,15 +97,11 @@ function Cart() {
         <div className="total-div">
           <div className="sub-total d-flex justify-content-between align-items-center">
             <span className="cart-subtitle">sub total</span>
-            <span className="cart-subtitle fw-bold">
-              ${calculateSubTotal()}
-            </span>
+            <span className="cart-subtitle fw-bold">${pricing.subTotal}</span>
           </div>
           <div className="tax d-flex justify-content-between align-items-center ">
             <span className="cart-subtitle">tax</span>
-            <span className="cart-subtitle fw-bold">
-              ${calculateTotalTax()}
-            </span>
+            <span className="cart-subtitle fw-bold">${pricing.taxTotal}</span>
           </div>
         </div>
 
@@ -102,7 +109,9 @@ function Cart() {
 
         <div className="grand-total d-flex justify-content-between align-items-center">
           <span className="grand-total-font">Total</span>
-          <span className="grand-total-font fw-bold">${grandTotal()}</span>
+          <span className="grand-total-font fw-bold">
+            ${pricing.totalAmount}
+          </span>
         </div>
       </div>
     </div>

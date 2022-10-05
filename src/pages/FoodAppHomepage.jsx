@@ -1,12 +1,12 @@
 import React from "react";
 
-import HeaderSection from "../components/foodAppHeader";
-import CategoriesLinkSection from "../components/categories-link-section";
+// components imports
+import HeaderSection from "../components/FoodAppHeader";
+import CategoriesLinkSection from "../components/Categories-link-section";
 import CategoriesSection from "../components/Categories-section";
-import CartSection from "../components/cart-section";
+import CartSection from "../components/Cart-section";
 
 // redux import
-
 import { useSelector } from "react-redux";
 
 function FoodAppHomepage() {

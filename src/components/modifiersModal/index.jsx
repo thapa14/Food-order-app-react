@@ -14,6 +14,7 @@ import Modifiers from "./Modifiers";
 import OptionalWrapper from "./OptionalWrapper";
 
 function ModifiersModal({ data }) {
+  // states
   const [modifiersQty, setModifiersQty] = useState(1);
   const [selectedModifierItems, setSelectedModierItems] = useState({
     modifiersNames: [],

@@ -31,74 +31,72 @@ function OrderSection({
         </p>
       </div>
 
-      {deliveryTypeData.map((item, index) => {
-        const {
-          id,
-          itemName,
-          valuebeforetax,
-          qty,
-          pickupAtCounter,
-          modifierNames,
-        } = item;
-        return (
-          <div key={index}>
-            <div className="row w-100 d-flex align-items-center mt-3">
-              <div className="col-6">
-                <h4 className="cartItem__name">{itemName}</h4>
-                <p className="mb-0 cartItem__modifiers">
-                  <span>{modifierNames.toString()}</span>
-                </p>
-              </div>
-              <div className="col-3">
-                <RemoveCircleOutlineIcon
-                  className="modifier__icon cart-modifier__icon"
-                  // to decrease quantity inline function function
+      {deliveryTypeData.map(
+        (
+          { id, itemName, valuebeforetax, qty, pickupAtCounter, modifierNames },
+          index
+        ) => {
+          return (
+            <div key={index}>
+              <div className="row w-100 d-flex align-items-center mt-3">
+                <div className="col-6">
+                  <h4 className="cartItem__name">{itemName}</h4>
+                  <p className="mb-0 cartItem__modifiers">
+                    <span>{modifierNames.toString()}</span>
+                  </p>
+                </div>
+                <div className="col-3">
+                  <RemoveCircleOutlineIcon
+                    className="modifier__icon cart-modifier__icon"
+                    // to decrease quantity inline function function
 
-                  onClick={() =>
-                    dispatch(
-                      decQuantity({
-                        id: id,
-                        pickupAtCounter: pickupAtCounter,
-                      })
-                    )
-                  }
-                />
-                <span className="mx-3 fs-5 fw-bold">{qty}</span>
-                <AddCircleOutlineIcon
-                  className="modifier__icon cart-modifier__icon"
-                  // to increase quantity inline function
+                    onClick={() =>
+                      dispatch(
+                        decQuantity({
+                          id: id,
+                          pickupAtCounter: pickupAtCounter,
+                        })
+                      )
+                    }
+                  />
+                  <span className="mx-3 fs-5 fw-bold">{qty}</span>
+                  <AddCircleOutlineIcon
+                    className="modifier__icon cart-modifier__icon"
+                    // to increase quantity inline function
 
-                  onClick={() =>
-                    dispatch(
-                      incQuantity({
-                        id: id,
-                        pickupAtCounter: pickupAtCounter,
-                      })
-                    )
-                  }
-                />
-              </div>
-              <div className="col-3 d-flex justify-content-end align-items-center">
-                <span className="fs-6 fw-bold">
-                  ${eval(valuebeforetax * qty).toFixed(2)}
-                </span>
-                <CancelIcon
-                  className="ms-2 text-secondary"
-                  style={{ cursor: "pointer" }}
-                  onClick={() =>
-                    dispatch(
-                      deleteFromCart({
-                        id: id,
-                        pickupAtCounter: pickupAtCounter,
-                      })
-                    )
-                  }
-                />
+                    onClick={() =>
+                      dispatch(
+                        incQuantity({
+                          id: id,
+                          pickupAtCounter: pickupAtCounter,
+                        })
+                      )
+                    }
+                  />
+                </div>
+
+                <div className="col-3 d-flex justify-content-end align-items-center">
+                  <span className="fs-6 fw-bold">
+                    ${(valuebeforetax * qty).toFixed(2)}
+                  </span>
+                  <CancelIcon
+                    className="ms-2 text-secondary"
+                    style={{ cursor: "pointer" }}
+                    onClick={() =>
+                      dispatch(
+                        deleteFromCart({
+                          id: id,
+                          pickupAtCounter: pickupAtCounter,
+                        })
+                      )
+                    }
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        }
+      )}
     </>
   );
 }

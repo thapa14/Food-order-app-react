@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import data from "../assets/data.json";
+import data from "../Constants/data.json";
 const initialValue = {
   foodAppData: [...data],
   modalData: {},
@@ -22,18 +22,22 @@ const cartSlice = createSlice({
       // data object destructuring
       const { pickupAtCounter } = action.payload.item;
 
+      const pickedItemData = {
+        ...action.payload.item,
+        qty: action.payload.quantity,
+      };
       if (pickupAtCounter) {
-        const pickedItemData = {
-          ...action.payload.item,
-          qty: action.payload.quantity,
-        };
-        state.orderedItems.pickupAtCounter.push(pickedItemData);
+        let isItemPresent = state.orderedItems.pickupAtCounter.find(
+          (item) => item.id === pickedItemData.id
+        );
+        !isItemPresent &&
+          state.orderedItems.pickupAtCounter.push(pickedItemData);
       } else {
-        const pickedItemData = {
-          ...action.payload.item,
-          qty: action.payload.quantity,
-        };
-        state.orderedItems.inSeatDelivery.push(pickedItemData);
+        let isItemPresent = state.orderedItems.inSeatDelivery.find(
+          (item) => item.id === pickedItemData.id
+        );
+        !isItemPresent &&
+          state.orderedItems.inSeatDelivery.push(pickedItemData);
       }
     },
 
@@ -74,7 +78,7 @@ const cartSlice = createSlice({
         const indexOfItem = state.orderedItems.inSeatDelivery.findIndex(
           (item) => item.id === action.payload.id
         );
-        if (state.orderedItems.inSeatDelivery[indexOfItem].qty > 0) {
+        if (state.orderedItems.inSeatDelivery[indexOfItem].qty > 1) {
           state.orderedItems.inSeatDelivery[indexOfItem].qty -= 1;
         }
       }
