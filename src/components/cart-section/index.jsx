@@ -71,7 +71,7 @@ function Cart() {
   return inSeatDeliveryItems.length || pickupAtCounterItems.length ? (
     <div className="card cart-card shadow w-100   text-start">
       <h2 className="fs-4 mt-1 fw-bold">Order Summary</h2>
-      <div className="order__summary">
+      <div className="order__summary pb-3">
         {pickupAtCounterItems.length ? (
           <OrderSection
             DeliveryIcon={HailIcon}
