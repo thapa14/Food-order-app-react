@@ -58,44 +58,52 @@ function Cart() {
   };
 
   return inSeatDeliveryItems.length || pickupAtCounterItems.length ? (
-    <div className="card cart-card shadow w-100  p-4 text-start">
-      <h2 className="fs-4 mt-1">Order Summary</h2>
-      {pickupAtCounterItems.length ? (
-        <OrderSection
-          DeliveryIcon={HailIcon}
-          atCounter={true}
-          deliveryTypeData={pickupAtCounterItems}
-          deliveryType="Picked-up by you"
-        />
-      ) : null}
+    <div className="card cart-card shadow w-100   text-start">
+      <h2 className="fs-4 mt-1 fw-bold">Order Summary</h2>
+      <div className="order__summary">
+        {pickupAtCounterItems.length ? (
+          <OrderSection
+            DeliveryIcon={HailIcon}
+            atCounter={true}
+            deliveryTypeData={pickupAtCounterItems}
+            deliveryType="Picked-up by you"
+          />
+        ) : null}
 
-      {inSeatDeliveryItems.length ? (
-        <OrderSection
-          DeliveryIcon={WeekendIcon}
-          atCounter={false}
-          deliveryTypeData={inSeatDeliveryItems}
-          deliveryType="Delivered to your seat"
-        />
-      ) : null}
-
-      <div className="line my-2"></div>
-
-      <div className="total-div">
-        <div className="sub-total d-flex justify-content-between align-items-center">
-          <span className="cart-subtitle">sub total</span>
-          <span className="cart-subtitle fw-bold">${calculateSubTotal()}</span>
-        </div>
-        <div className="tax d-flex justify-content-between align-items-center ">
-          <span className="cart-subtitle">tax</span>
-          <span className="cart-subtitle fw-bold">${calculateTotalTax()}</span>
-        </div>
+        {inSeatDeliveryItems.length ? (
+          <OrderSection
+            DeliveryIcon={WeekendIcon}
+            atCounter={false}
+            deliveryTypeData={inSeatDeliveryItems}
+            deliveryType="Delivered to your seat"
+          />
+        ) : null}
       </div>
 
-      <div className="line my-2"></div>
+      <div>
+        <div className="line my-2"></div>
 
-      <div className="grand-total d-flex justify-content-between align-items-center">
-        <span className="grand-total-font">Total</span>
-        <span className="grand-total-font fw-bold">${grandTotal()}</span>
+        <div className="total-div">
+          <div className="sub-total d-flex justify-content-between align-items-center">
+            <span className="cart-subtitle">sub total</span>
+            <span className="cart-subtitle fw-bold">
+              ${calculateSubTotal()}
+            </span>
+          </div>
+          <div className="tax d-flex justify-content-between align-items-center ">
+            <span className="cart-subtitle">tax</span>
+            <span className="cart-subtitle fw-bold">
+              ${calculateTotalTax()}
+            </span>
+          </div>
+        </div>
+
+        <div className="line my-2"></div>
+
+        <div className="grand-total d-flex justify-content-between align-items-center">
+          <span className="grand-total-font">Total</span>
+          <span className="grand-total-font fw-bold">${grandTotal()}</span>
+        </div>
       </div>
     </div>
   ) : (

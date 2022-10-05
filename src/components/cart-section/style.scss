@@ -1,6 +1,12 @@
 .cart-card {
-  max-height: 75vh;
-  overflow-x: hidden;
+  max-height: 80vh;
+  // overflow-x: hidden;
+  padding: 2rem;
+
+  .order__summary {
+    max-height: calc(80vh - 120px);
+    overflow-x: hidden;
+  }
 }
 .cart-subtitle {
   font-size: 1.25rem;

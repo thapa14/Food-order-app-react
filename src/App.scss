@@ -9,6 +9,10 @@ html {
   font-size: 62.5%;
 }
 
+.scroll-lock {
+  overflow: hidden !important;
+}
+
 ::-webkit-scrollbar {
   width: 2px;
 }

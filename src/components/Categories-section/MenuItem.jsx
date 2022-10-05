@@ -30,6 +30,7 @@ function MenuItem({ menuItemData }) {
   const addToCartBtnHandler = () => {
     if (modifierGroups.length && smartModifiers.length) {
       dispatch(setModalData(menuItemData));
+      document.body.classList.add("scroll-lock");
     } else {
       dispatch(
         addToCart({

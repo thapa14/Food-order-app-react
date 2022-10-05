@@ -81,6 +81,7 @@ function ModifiersModal({ data }) {
   // function to close the modal and reset its data
   const closeModal = () => {
     dispatch(setModalData({}));
+    document.body.classList.remove("scroll-lock");
   };
 
   // function to add items to cart
